@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hangman Game</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+  </head>
+  <body>
+  <body>
+     <div class="container">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+          <div class="jumbotron">
+            <h1 class="text-center">Hangman Game</h1>
+            <h2 class="text-center">Try and guess this word in 9 tries.</h2>
+            <h2 class="text-center" ><span id="word-spaces"><strong>_ _ _</strong></span></h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Your Score Table</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Guesses Left</th>
+              <td id="guesses-left">10</td>
+            </tr>
+            <tr>
+              <th scope="row">Already Guessed</th>
+              <td id="guesses-displayed">..</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+  </body>
+</html>
