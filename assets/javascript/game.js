@@ -1,47 +1,47 @@
+
+// One run of the game.
+//================================================================================
+function gameStart() {
 /*Creat an array of possible words for the game */
-var wordOptions = ["panther", "sailboat", "apple", "microwave", "skateboard", "lion", "missouri", "spain", "basketball", "accountant", "policeman", "doctor"];
+	var wordOptions = ["panther", "computer", "paycheck", "backpack", "africa", "lightbulb", "venus", "sailboat", "apple", "microwave", "skateboard", "lion", "missouri", "spain", "basketball", "accountant", "policeman", "doctor"];
 
-// Generate random word from above array
-var computerWord = wordOptions[Math.floor(Math.random()* wordOptions.length)];
-
-var wordLength = computerWord.length;
-
-// display guessesLeft on screen 
-var guessesLeft = document.getElementById("guesses-left");
-
-var alreadyGuessedArray = [];
-var alreadyGuessed = document.getElementById("guesses-displayed")
+	// display guessesLeft on screen 
+	var guessesLeft = document.getElementById("guesses-left");
+	console.log(guessesLeft.textContent);
 
 
-// Empyt array to fill with underscores depending on computerWord length
-var underscoreArray =[];
-var makeUnderscoreLetters;
+	var alreadyGuessedArray = [];
+	var alreadyGuessed = document.getElementById("guesses-displayed")
 
-// create a function that makes _ _ _ _ for the word
-// function makeUnderscoreLetters(){
-for (var i = 0; i<computerWord.length; i++) {
-	underscoreArray[i]= "_";
-}
+	// Empyt array to fill with underscores depending on computerWord length
+	var underscoreArray =[];
+	var makeUnderscoreLetters;
 
-underscoreLetters = underscoreArray.join(" ");
-
-// makeUnderscoreLetters();
-
-console.log(computerWord);
-console.log(typeof(computerWord));
-console.log(wordLength);
-
-// place the new string created in the above function on site so users know length of word
-var wordSpaces = document.getElementById("word-spaces");
-wordSpaces.textContent = underscoreLetters;
-
-var noCounter = 0;
-var remainingLetters = wordLength;
-console.log(remainingLetters);
+	var noCounter = 0;
+	var remainingLetters = 1
+	var winCount = document.getElementById("total-wins");
 
 
-// Get users guess
-document.onkeyup = function(event) {
+	// create function to choose word
+	// Generate random word from above array
+	var computerWord = wordOptions[Math.floor(Math.random()* wordOptions.length)];
+
+	// Count that words length. 
+	var wordLength = computerWord.length;
+	remainingLetters = wordLength;
+
+	// Make _ _ _ _ for the word
+	for (var i = 0; i<computerWord.length; i++) {
+		underscoreArray[i]= "_";
+	}
+	underscoreLetters = underscoreArray.join(" ");
+
+	// place the new string created in the above code on site so users know length of word
+	var wordSpaces = document.getElementById("word-spaces");
+	wordSpaces.textContent = underscoreLetters;
+
+	// Get users guess
+	document.onkeyup = function(event) {
 		var userGuess = event.key; 
 		guessRight = false;
 		noCounter =0;
@@ -66,11 +66,42 @@ document.onkeyup = function(event) {
 		}
 		if (guessesLeft.textContent < 1) {
 			alert("Sorry, you loose...");
+			alert("Press spacebar to play agian.")
+			callGame();
 		}
 		if (remainingLetters < 1) {
 			alert("YAY you won!");
+			alert("Press spacebar to play agian.")
+			winCount.textContent ++;
+			callGame();
 		}
 	};
+}
+
+// call game to start 
+//========================================================================
+function callGame() {
+	document.onkeyup = function(event) {
+		var x = event.keyCode;
+		if (x == 32) {
+			gameStart();
+		}	
+	}
+}
+
+callGame();
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

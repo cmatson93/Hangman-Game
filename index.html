@@ -2,6 +2,8 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>Hangman Game</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -15,6 +17,7 @@
           <div class="jumbotron">
             <h1 class="text-center">Hangman Game</h1>
             <h2 class="text-center">Try and guess this word in 9 tries.</h2>
+            <h2 class="text-center">Press the spacebar to begin.</h2>
             <h2 class="text-center" ><span id="word-spaces"><strong>_ _ _</strong></span></h2>
           </div>
         </div>
@@ -34,6 +37,10 @@
             <tr>
               <th scope="row">Already Guessed</th>
               <td id="guesses-displayed">..</td>
+            </tr>
+            <tr>
+              <th scope="row">Wins</th>
+              <td id="total-wins">0</td>
             </tr>
           </tbody>
         </table>
