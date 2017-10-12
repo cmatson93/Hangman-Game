@@ -6,13 +6,11 @@ var computerWord = wordOptions[Math.floor(Math.random()* wordOptions.length)];
 
 var wordLength = computerWord.length;
 
-// set guesses left to 9 at start of game 
-var guessesLeft = 9;
 // display guessesLeft on screen 
 var guessesLeft = document.getElementById("guesses-left");
 
 var alreadyGuessedArray = [];
-var alreadyGuessedArray = document.getElementById("gesses-displayed")
+var alreadyGuessed = document.getElementById("guesses-displayed")
 
 
 // Empyt array to fill with underscores depending on computerWord length
@@ -37,22 +35,42 @@ console.log(wordLength);
 var wordSpaces = document.getElementById("word-spaces");
 wordSpaces.textContent = underscoreLetters;
 
+var noCounter = 0;
+var remainingLetters = wordLength;
+console.log(remainingLetters);
+
+
 // Get users guess
 document.onkeyup = function(event) {
-	var userGuess = event.key; 
-	for (var j=0; j < wordLength; j++){
-		if (computerWord[j] === userGuess) {
-			underscoreArray[j] = userGuess;
-			underscoreLetters = underscoreArray.join(" ");
-			console.log(userGuess);
-			wordSpaces.textContent = underscoreLetters;
-		} 
-		// else {
-		// 	alreadyGuessedArray.push(userGuess);
-		// 	alreadyGuessedArray.textContent = alreadyGuessedArray;
-		// }
-	}
-}
+		var userGuess = event.key; 
+		guessRight = false;
+		noCounter =0;
+		for (var j=0; j < wordLength; j++){
+			if (computerWord[j] === userGuess) {
+				underscoreArray[j] = userGuess;
+				underscoreLetters = underscoreArray.join(" ");
+				wordSpaces.textContent = underscoreLetters;
+				remainingLetters --;
+				guessRight = false;
+				console.log(remainingLetters);
+			} 
+			else {
+				noCounter++;
+			}
+		}
+		if (noCounter === wordLength) {
+			guessesLeft.textContent -=1;
+			alreadyGuessedArray.push(userGuess);
+			alreadyGuessed.textContent = alreadyGuessedArray;
+			noCounter = 0;
+		}
+		if (guessesLeft.textContent < 1) {
+			alert("Sorry, you loose...");
+		}
+		if (remainingLetters < 1) {
+			alert("YAY you won!");
+		}
+	};
 
 
 
