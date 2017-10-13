@@ -1,0 +1,28 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #d1aa90;
+}
+
+#upper-space {
+	height: 50px;
+}
+
+.jumbotron {
+	background: none;
+}
+
+.heading {
+	background: gray url(../images/wov.png) repeat 0 0;
+	width: 100%;
+	margin: 0;
+	text-align: center;
+	-webkit-animation: slid 20s linear infinite;
+}
+
+@-webkit-keyframes slid {
+	from {
+		background-position: 0 0;
+	}
+	to { background-position: -400px 0; }
+}
